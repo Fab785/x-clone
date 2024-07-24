@@ -33,7 +33,7 @@ function Sidebar() {
         <div className='h-full hidden sm:flex flex-col fixed xl:ml-24'>
             <nav className="h-full xl:space-y-1.5 relative">
                 <div className='flex xl:justify-start justify-center items-center py-3 xl:p-3'>
-                    <Image src={"/assets/twitter-logo.png"} width={34} height={34} />
+                    <Image src="/assets/twitter-logo.png" width={34} height={34} />
                 </div>
                 <SidebarLink Icon={HomeIcon} text={"Home"} />
                 <SidebarLink Icon={HashtagIcon} text={"Explore"} />

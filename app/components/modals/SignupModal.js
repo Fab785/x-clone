@@ -23,9 +23,11 @@ function SignupModal() {
             password
         )
 
+        const url = `/assets/profilepictures/profile${Math.ceil(Math.random()*6)}.PNG`;
+
         await updateProfile(auth.currentUser, {
             displayName: name,
-            photoURL: `/assets/profilepictures/profile${Math.ceil(Math.random()*6)}.PNG`
+            photoURL: url
         })
 
         location.reload()
