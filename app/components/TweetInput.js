@@ -18,11 +18,12 @@ function TweetInput() {
 
     async function sendTweet() {
 
-        setLoading(true);
         if (!user.username) {
             dispatch(openLoginModal())
             return
         }
+
+        setLoading(true);
 
         const docRef = await addDoc(collection(db, "tweets"), {
             username: user.username,
