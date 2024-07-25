@@ -9,7 +9,7 @@ import { auth } from '@/firebase';
 
 function SidebarLink({ text, Icon }) {
     return (
-        <li className='hoverAnimation flex mb-3 items-center xl:justify-start justify-center text-xl space-x-3 xl:p-3'>
+        <li className='hoverAnimation flex mb-3 items-center xl:justify-start justify-center text-xl space-x-3 xl:p-3 cursor-disabled'>
             <Icon className="h-7" />
             <span className='hidden xl:inline'>{text}</span>
         </li>
