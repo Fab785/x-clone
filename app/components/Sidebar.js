@@ -9,7 +9,7 @@ import { auth } from '@/firebase';
 
 function SidebarLink({ text, Icon }) {
     return (
-        <li className='hoverAnimation flex mb-3 items-center xl:justify-start justify-center text-xl space-x-3 xl:p-3 cursor-disabled'>
+        <li className='hoverAnimation flex mb-3 items-center xl:justify-start justify-center text-xl space-x-3 xl:p-3'>
             <Icon className="h-7" />
             <span className='hidden xl:inline'>{text}</span>
         </li>
@@ -42,7 +42,7 @@ function Sidebar() {
                 <SidebarLink Icon={BookmarkIcon} text={"Bookmarks"} />
                 <SidebarLink Icon={UserIcon} text={"Profile"} />
                 <SidebarLink Icon={DotsCircleHorizontalIcon} text={"More"} />
-                <button className='hidden xl:inline bg-[#1d9bf0] rounded-full h-[52px] w-[200px] text-lg font-bold'>
+                <button className='hidden xl:inline bg-[#1d9bf0] rounded-full h-[52px] w-[200px] text-lg font-bold cursor-not-allowed'>
                     Tweet
                 </button>
                 <div onClick={handleSignOut} className='hover:bg-white hover:bg-opacity-10 rounded-full xl:p-3 cursor-pointer absolute flex justify-center items-center space-x-3 bottom-3'>

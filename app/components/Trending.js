@@ -57,7 +57,7 @@ function Trending() {
               <h1 className='text-[12px] text-gray-500 mt-1'>@dvdlee</h1>
             </div>
           </div>
-          <button className='bg-white text-black text-sm w-20 rounded-3xl font-bold h-8'>Follow</button>
+          <button className='bg-white text-black text-sm w-20 rounded-3xl font-bold h-8 cursor-not-allowed'>Follow</button>
         </div>
         <div className='flex justify-between p-3 items-center'>
           <div className='flex space-x-3 p-3'>
@@ -70,7 +70,7 @@ function Trending() {
               <h1 className='text-[12px] text-gray-500 mt-1'>@dvdlee</h1>
             </div>
           </div>
-          <button className='bg-white text-black text-sm w-20 rounded-3xl font-bold h-8'>Follow</button>
+          <button className='bg-white text-black text-sm w-20 rounded-3xl font-bold h-8 cursor-not-allowed'>Follow</button>
         </div>
         <div className='flex justify-between p-3 items-center'>
           <div className='flex space-x-3 p-3'>
@@ -83,7 +83,7 @@ function Trending() {
               <h1 className='text-[12px] text-gray-500 mt-1'>@dvdlee</h1>
             </div>
           </div>
-          <button className='bg-white text-black text-sm w-20 rounded-3xl font-bold h-8'>Follow</button>
+          <button className='bg-white text-black text-sm w-20 rounded-3xl font-bold h-8 cursor-not-allowed'>Follow</button>
         </div>
       </div>
     </div>
