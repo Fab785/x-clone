@@ -58,7 +58,7 @@ function CommentsPage({ params }) {
                         <Link href={"/"}>
                             <ArrowLeftIcon className='w-7 cursor-pointer' />
                         </Link>
-                        <h1>Tweet</h1>
+                        <h1>Post</h1>
                     </div>
 
                     {/* Head Tweet */}
@@ -87,10 +87,10 @@ function CommentsPage({ params }) {
                     <div className='flex justify-between border-b border-gray-700 p-2 items-center'>
                         <div className='flex justify-center items-center w-full'>
                             <img src={user.photoUrl} className='w-12 h-12 rounded-full object-cover p-1 space-x-2' />
-                            <textarea className='text-2xl w-full bg-transparent resize-none outline-none ml-2 h-[35px]' placeholder='Tweet your reply' onChange={e => setComment(e.target.value)} value={comment} />
+                            <textarea className='text-2xl w-full bg-transparent resize-none outline-none ml-2 h-[35px]' placeholder='Post your reply' onChange={e => setComment(e.target.value)} value={comment} />
                         </div>
                         <button className='bg-[#1d9bf0] rounded-full px-4 py-1.5 disabled:opacity-50' onClick={sendComment} disabled={!comment}>
-                            Tweet
+                            Post
                         </button>
                     </div>
 
