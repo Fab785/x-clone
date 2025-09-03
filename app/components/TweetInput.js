@@ -1,117 +1,57 @@
-import { CalendarIcon, ChartBarIcon, EmojiHappyIcon, LocationMarkerIcon, PhotographIcon, XIcon } from '@heroicons/react/outline'
-import { addDoc, collection, doc, serverTimestamp, updateDoc } from 'firebase/firestore'
-import React, { useRef, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { db, storage } from '@/firebase';
-import { openLoginModal } from '@/redux/modalSlice';
-import { getDownloadURL, ref, uploadString } from 'firebase/storage';
+'use client'
 
-function TweetInput() {
+import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { db } from '@/firebase'
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
 
-    const user = useSelector(state => state.user);
-    const dispatch = useDispatch();
+export default function TweetInput() {
+  const user = useSelector(state => state.user)
+  const [tweet, setTweet] = useState('')
+  const [imageUrl, setImageUrl] = useState('')
 
-    const [text, setText] = useState("")
-    const [image, setImage] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const filePickerRef = useRef(null)
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    if (!tweet.trim()) return
 
-    async function sendTweet() {
+    await addDoc(collection(db, 'tweets'), {
+      tweet: tweet,
+      image: imageUrl || null,
+      name: user.name || 'Guest User',
+      username: user.username || 'guest',
+      photoUrl: user.photoUrl || '/assets/profilepictures/profile1.PNG',
+      uid: user.uid || 'guest',
+      likes: [],
+      comments: [],
+      timestamp: serverTimestamp()
+    })
 
-        if (!user.username) {
-            dispatch(openLoginModal())
-            return
-        }
+    setTweet('')
+    setImageUrl('')
+  }
 
-        setLoading(true);
-
-        const docRef = await addDoc(collection(db, "tweets"), {
-            username: user.username,
-            name: user.name,
-            photoUrl: user.photoUrl,
-            uid: user.uid,
-            timestamp: serverTimestamp(),
-            likes: [],
-            tweet: text
-        })
-
-        if (image) {
-            const imageRef = ref(storage, `tweetImages/${docRef.id}`)
-            const uploadImage = await uploadString(imageRef, image, "data_url")
-            const downloadURL = await getDownloadURL(imageRef)
-            await updateDoc(doc(db, "tweets", docRef.id), {
-                image: downloadURL
-            })
-        }
-
-        setText("");
-        setImage(null);
-        setLoading(false);
-    }
-
-    function addImageToTweet(e) {
-        const reader = new FileReader()
-        if (e.target.files[0]) {
-            reader.readAsDataURL(e.target.files[0])
-        }
-
-        reader.addEventListener("load", e => {
-            setImage(e.target.result);
-        })
-    }
-
-    return (
-        <div className='flex space-x-3 p-3 border-gray-700 border-b'>
-            <img
-                className='w-11 h-11 rounded-full object-cover'
-                src={user.photoUrl || "/assets/twitter-logo.png"} />
-
-            {loading && <h1 className='text-2xl text-gray-500'>Uploading post...</h1>}
-
-            {!loading && (<div className='w-full'>
-                <textarea 
-                className='bg-transparent resize-none outline-none w-full min-h-[50px] text-lg' 
-                placeholder="What's on your mind?" 
-                onChange={e => setText(e.target.value)}
-                value={text}/>
-
-                {image && (
-                    <div className='mb-4 relative'>
-                        <div className='absolute top-1 left-1 bg-[#272c26] rounded-full w-8 h-8 flex justify-center 
-                        items-center cursor-pointer hover:bg-white hover:bg-opacity-10' 
-                        onClick={() => {setImage(null)}}>
-                            <XIcon className='h-5' />
-                        </div>
-                        <img src={image} className='rounded-2xl max-h-80 object-contain'/>
-                    </div>
-                )}
-
-                <div className='flex justify-between border-t border-gray-700 pt-4'>
-                    <div className='flex space-x-0'>
-                        <div className='iconAnimation' onClick={() => filePickerRef.current.click()}>
-                            <PhotographIcon className='h-[22px] text-[#1d9bf0]'/>
-                        </div>
-                        <input ref={filePickerRef} type='file' className='hidden' onChange={addImageToTweet}/>
-                        <div className='iconAnimation hover:cursor-not-allowed'>
-                            <ChartBarIcon className='h-[22px] text-[#1d9bf0]'/>
-                        </div>
-                        <div className='iconAnimation hover:cursor-not-allowed'>
-                            <EmojiHappyIcon className='h-[22px] text-[#1d9bf0]'/>
-                        </div>
-                        <div className='iconAnimation hover:cursor-not-allowed'>
-                            <CalendarIcon className='h-[22px] text-[#1d9bf0]'/>
-                        </div>
-                        <div className='iconAnimation hover:cursor-not-allowed'>
-                            <LocationMarkerIcon className='h-[22px] text-[#1d9bf0]'/>
-                        </div>
-                    </div>
-                    <button className='bg-[#1d9bf0] rounded-full px-4 py-1.5 disabled:opacity-50' onClick={sendTweet} disabled={!text && !image}>
-                        Tweet
-                    </button>
-                </div>
-            </div>)}
-        </div>
-    )
+  return (
+    <div className='p-3 border-b border-gray-700'>
+      <form onSubmit={handleSubmit} className='flex flex-col space-y-2'>
+        <textarea
+          className='w-full bg-black text-white p-3 rounded-md border border-gray-700 resize-none'
+          placeholder="What's happening?"
+          value={tweet}
+          onChange={e => setTweet(e.target.value)}
+        />
+        <input
+          className='w-full bg-black text-white p-2 rounded-md border border-gray-700'
+          placeholder="Optional: image URL"
+          value={imageUrl}
+          onChange={e => setImageUrl(e.target.value)}
+        />
+        <button
+          type='submit'
+          className='bg-blue-500 text-white px-4 py-2 rounded-full self-end hover:bg-blue-600'
+        >
+          Tweet
+        </button>
+      </form>
+    </div>
+  )
 }
-
-export default TweetInput
