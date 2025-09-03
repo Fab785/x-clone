@@ -23,7 +23,7 @@ function LoginModal() {
         const userCredentials = await signInAnonymously(auth);
 
         // Assign a fake display name and profile picture
-        const url = `/assets/profilepictures/profile${Math.ceil(Math.random()*6)}.PNG`;
+        const url = `/assets/profilepictures/profile${Math.ceil(Math.random()*5)}.PNG`;
         await updateProfile(auth.currentUser, {
             displayName: "Guest",
             photoURL: url

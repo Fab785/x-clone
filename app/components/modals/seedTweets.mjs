@@ -25,7 +25,7 @@ const demoTweets = [
     uid: "uid3",
     photoUrl: "/assets/profilepictures/profile3.png",
     tweet: "Check out this cool pic!",
-    image: "/assets/demo/tweet1.jpg",
+    image: "/assets/profilepictures/castle.jpg",
     likes: [],
     comments: []
   },
@@ -33,7 +33,7 @@ const demoTweets = [
     name: "Diana Prince",
     username: "wonderdiana",
     uid: "uid4",
-    photoUrl: "/assets/profilepictures/profile4.png",
+    photoUrl: "/assets/profilepictures/winnie.jpeg",
     tweet: "Looking forward to the weekend.",
     image: "",
     likes: [],
