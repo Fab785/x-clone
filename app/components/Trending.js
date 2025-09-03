@@ -15,7 +15,7 @@ function Trending() {
         <div className='p-3 relative'>
           <DotsHorizontalIcon className='w-5 text-gray-600 absolute right-4' />
           <p className='text-xs text-gray-500'>Trending in US</p>
-          <h1 className='text-[15px] font-bold'>China</h1>
+          <h1 className='text-[15px] font-bold'>Japan</h1>
           <p className='text-xs text-gray-500'>340K Tweets</p>
         </div>
         <div className='p-3 relative'>
@@ -27,7 +27,7 @@ function Trending() {
         <div className='p-3 relative'>
           <DotsHorizontalIcon className='w-5 text-gray-600 absolute right-4' />
           <p className='text-xs text-gray-500'>Trending in US</p>
-          <h1 className='text-[15px] font-bold'>Elon Musk</h1>
+          <h1 className='text-[15px] font-bold'>Disney</h1>
           <p className='text-xs text-gray-500'>30K Tweets</p>
         </div>
         <div className='p-3 relative'>
@@ -51,10 +51,10 @@ function Trending() {
             <img className="w-11 h-11 object-cover rounded-full" src="/assets/profilepic.jpg" />
             <div>
               <div className='flex space-x-1'>
-                <h1 className='font-bold'>David Lee</h1>
+                <h1 className='font-bold'>Fabrizio</h1>
                 <BadgeCheckIcon className='w-[18px] text-blue-400' />
               </div>
-              <h1 className='text-[12px] text-gray-500 mt-1'>@dvdlee</h1>
+              <h1 className='text-[12px] text-gray-500 mt-1'>@Fab85</h1>
             </div>
           </div>
           <button className='bg-white text-black text-sm w-20 rounded-3xl font-bold h-8 cursor-not-allowed'>Follow</button>
@@ -64,10 +64,10 @@ function Trending() {
             <img className="w-11 h-11 object-cover rounded-full" src="/assets/profilepic.jpg" />
             <div>
               <div className='flex space-x-1'>
-                <h1 className='font-bold'>David Lee</h1>
+                <h1 className='font-bold'>Fabrizio</h1>
                 <BadgeCheckIcon className='w-[18px] text-blue-400' />
               </div>
-              <h1 className='text-[12px] text-gray-500 mt-1'>@dvdlee</h1>
+              <h1 className='text-[12px] text-gray-500 mt-1'>@Fab85</h1>
             </div>
           </div>
           <button className='bg-white text-black text-sm w-20 rounded-3xl font-bold h-8 cursor-not-allowed'>Follow</button>
@@ -77,10 +77,10 @@ function Trending() {
             <img className="w-11 h-11 object-cover rounded-full" src="/assets/profilepic.jpg" />
             <div>
               <div className='flex space-x-1'>
-                <h1 className='font-bold'>David Lee</h1>
+                <h1 className='font-bold'>Fabrizio</h1>
                 <BadgeCheckIcon className='w-[18px] text-blue-400' />
               </div>
-              <h1 className='text-[12px] text-gray-500 mt-1'>@dvdlee</h1>
+              <h1 className='text-[12px] text-gray-500 mt-1'>@Fab85</h1>
             </div>
           </div>
           <button className='bg-white text-black text-sm w-20 rounded-3xl font-bold h-8 cursor-not-allowed'>Follow</button>
