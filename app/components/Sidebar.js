@@ -43,7 +43,7 @@ function Sidebar() {
                 <SidebarLink Icon={UserIcon} text={"Profile"} />
                 <SidebarLink Icon={DotsCircleHorizontalIcon} text={"More"} />
                 <button className='hidden xl:inline bg-[#1d9bf0] rounded-full h-[52px] w-[200px] text-lg font-bold cursor-not-allowed'>
-                    Tweet
+                    Post
                 </button>
                 <div onClick={handleSignOut} className='hover:bg-white hover:bg-opacity-10 rounded-full xl:p-3 cursor-pointer absolute flex justify-center items-center space-x-3 bottom-3'>
                     <img className='ml-3 w-10 h-10 rounded-full object-cover' src={user.photoUrl} />

@@ -16,31 +16,31 @@ function Trending() {
           <DotsHorizontalIcon className='w-5 text-gray-600 absolute right-4' />
           <p className='text-xs text-gray-500'>Trending in US</p>
           <h1 className='text-[15px] font-bold'>Japan</h1>
-          <p className='text-xs text-gray-500'>340K Tweets</p>
+          <p className='text-xs text-gray-500'>340K Posts</p>
         </div>
         <div className='p-3 relative'>
           <DotsHorizontalIcon className='w-5 text-gray-600 absolute right-4' />
           <p className='text-xs text-gray-500'>Trending in US</p>
           <h1 className='text-[15px] font-bold'>Apple</h1>
-          <p className='text-xs text-gray-500'>140K Tweets</p>
+          <p className='text-xs text-gray-500'>140K Posts</p>
         </div>
         <div className='p-3 relative'>
           <DotsHorizontalIcon className='w-5 text-gray-600 absolute right-4' />
           <p className='text-xs text-gray-500'>Trending in US</p>
           <h1 className='text-[15px] font-bold'>Disney</h1>
-          <p className='text-xs text-gray-500'>30K Tweets</p>
+          <p className='text-xs text-gray-500'>30K Posts</p>
         </div>
         <div className='p-3 relative'>
           <DotsHorizontalIcon className='w-5 text-gray-600 absolute right-4' />
           <p className='text-xs text-gray-500'>Trending in US</p>
           <h1 className='text-[15px] font-bold'>IU</h1>
-          <p className='text-xs text-gray-500'>75K Tweets</p>
+          <p className='text-xs text-gray-500'>75K Posts</p>
         </div>
         <div className='p-3 relative'>
           <DotsHorizontalIcon className='w-5 text-gray-600 absolute right-4' />
           <p className='text-xs text-gray-500'>Trending in US</p>
           <h1 className='text-[15px] font-bold'>Anime</h1>
-          <p className='text-xs text-gray-500'>10K Tweets</p>
+          <p className='text-xs text-gray-500'>10K Posts</p>
         </div>
       </div>
 
