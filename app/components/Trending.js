@@ -7,7 +7,7 @@ function Trending() {
     <div className='hidden flex-col lg:flex ml-7 mt-4'>
       <div className='flex space-x-3 bg-white bg-opacity-10 w-[300px] h-[44px] p-3 rounded-3xl'>
         <SearchIcon className='w-6 text-gray-600' />
-        <input className='bg-transparent focus:outline-none placeholder:text-gray-600' placeholder='Search Twitter' />
+        <input className='bg-transparent focus:outline-none placeholder:text-gray-600' placeholder='Search X' />
       </div>
 
       <div className='w-[300px] h-fit bg-white bg-opacity-10 rounded-3xl mt-3'>

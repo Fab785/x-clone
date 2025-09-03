@@ -13,6 +13,13 @@ import {
 import { auth } from '@/firebase';
 import { setUser } from '@/redux/userSlice';
 
+const GUEST_USER = {
+  name: "Guestoso",
+  username: "guest",
+  photoUrl: "/assets/profilepictures/profile1.PNG",
+  uid: "guest"
+}
+
 function SignupModal() {
     const isOpen = useSelector(state => state.modals.signupModalOpen);
     const dispatch = useDispatch();
@@ -21,49 +28,59 @@ function SignupModal() {
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
 
+    // Handle normal sign up
     async function handleSignUp() {
         const userCredentials = await createUserWithEmailAndPassword(
             auth,
             email,
             password
-        )
+        );
 
-        const url = `/assets/profilepictures/profile${Math.ceil(Math.random()*6)}.PNG`;
+        const url = `/assets/profilepictures/profile1.PNG`; // fixed image for now
 
         await updateProfile(auth.currentUser, {
             displayName: name,
             photoURL: url
-        })
-
-        location.reload()
-    }
-
-    async function handleGuestSignIn() {
-        // Sign in anonymously
-        const userCredentials = await signInAnonymously(auth);
-
-        // Set a fake display name and profile picture
-        const url = `/assets/profilepictures/profile${Math.ceil(Math.random()*6)}.PNG`;
-        await updateProfile(auth.currentUser, {
-            displayName: "Guest",
-            photoURL: url
         });
+
+        dispatch(setUser({
+          name: name,
+          username: email.split("@")[0],
+          photoUrl: url,
+          uid: auth.currentUser.uid,
+          email: email
+        }));
+
+        dispatch(closeSignupModal());
     }
 
+    // Handle guest sign in
+    async function handleGuestSignIn() {
+        await signInAnonymously(auth);
+
+        await updateProfile(auth.currentUser, {
+            displayName: GUEST_USER.name,
+            photoURL: GUEST_USER.photoUrl
+        });
+
+        dispatch(setUser(GUEST_USER));
+        dispatch(closeSignupModal());
+    }
+
+    // Listen for auth changes
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             if (!currentUser) return;
             dispatch(setUser({
-                username: currentUser.displayName || "Guest",
-                name: currentUser.displayName || "Guest",
+                username: currentUser.displayName || "Guestoso",
+                name: currentUser.displayName || "Guestoso",
                 email: currentUser.email || "guest@x-clone.com",
                 uid: currentUser.uid,
-                photoUrl: currentUser.photoURL
-            }))
+                photoUrl: currentUser.photoURL || "/assets/profilepictures/profile1.PNG"
+            }));
         });
-
         return unsubscribe;
-    }, [dispatch])
+    }, [dispatch]);
 
     return (
         <>
@@ -86,3 +103,4 @@ function SignupModal() {
 }
 
 export default SignupModal
+
